@@ -1,8 +1,9 @@
 import { storage, Context } from "near-sdk-as"
 
 // return the string 'hello world'
-export function helloWorld(names: Array<string>): string {
-  return names.map<string>(name => 'hello ' + name).join(``)
+export function helloWorld(): string {
+  const predecessor = Context.predecessor
+  return 'hello ' + predecessor
 }
 
 
@@ -16,7 +17,7 @@ export function read(key: string): string {
 }
 
 // write the given value at the given key to account (contract) storage
-export function write(key: string, value: string): string {
+export function write(key: string, value: string): string {""
   storage.set(key, value)
   return `✅ Data saved. ( ${storageReport()} )`
 }
